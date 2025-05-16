@@ -1,0 +1,10 @@
+# Go
+/bin/
+/pkg/
+*.exe
+*.test
+*.out
+
+# Env
+.env
+EOF

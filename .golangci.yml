@@ -1,0 +1,11 @@
+version: "1"
+run:
+  timeout: 2m
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - gosimple
+    - gofmt
+    - unused
