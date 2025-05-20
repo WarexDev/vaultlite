@@ -20,7 +20,7 @@ jobs:
           go-version: '1.23'
 
       - name: Build project
-        run: go build -o vaultlite ./cmd/main.go
+        run: go mod tidy -go="1.23.0 && "go build -o vaultlite ./cmd/main.go
 
       - name: Lint
         run: |
