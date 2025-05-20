@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"github.com/WarexDev/vaultlite/internal/api"
+)
 
 func main() {
-	fmt.Println("VaultLite is running")
+	router := api.SetupRouter()
+	err := router.Run(":8080")
+	if err != nil {
+		panic(err)
+	}
 }
