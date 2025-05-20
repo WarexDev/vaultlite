@@ -7,9 +7,8 @@ import (
 
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
-
-	// Routes
-	r.GET("/health", service.HealthCheck)
+	// Register routes
+	service.RegisterRoutes(r)
 
 	return r
 }

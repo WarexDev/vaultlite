@@ -1,0 +1,34 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: benoit.fraysse@hotmail.com
+    name: Benoit (WarexDev)
+    url: https://github.com/WarexDev
+  description: VaultLite is a lightweight secrets management API for secure storage
+    and retrieval of secrets in cloud-native environments.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://github.com/WarexDev/vaultlite/blob/main/LICENSE
+  title: VaultLite API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      description: Returns a simple OK status to verify the service is up and running
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Check the health status of the service
+      tags:
+      - health
+schemes:
+- http
+swagger: "2.0"

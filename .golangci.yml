@@ -1,11 +1,42 @@
-version: "2"
 run:
   timeout: 2m
+  tests: true
+
 linters:
   enable:
     - govet
-    - staticcheck
     - errcheck
+    - staticcheck
     - gosimple
-    - gofmt
     - unused
+    - gofmt
+    - goimports
+    - revive
+    - ineffassign
+    - typecheck
+    - gocritic
+
+linters-settings:
+  gofmt:
+    simplify: true
+
+  revive:
+    config: |
+      ignoreGeneratedHeader = false
+      severity = "warning"
+      rules = [
+        {name = "var-naming"},
+        {name = "package-comments"},
+        {name = "blank-imports"},
+        {name = "imports-blacklist"},
+        {name = "indent-error-flow"},
+      ]
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  exclude-rules:
+    - linters:
+        - revive
+      text: "don't use underscores in Go names"

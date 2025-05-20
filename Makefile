@@ -2,26 +2,36 @@
 BINARY_NAME=vaultlite
 ENTRY_POINT=./cmd/main.go
 
-# Chemins
-SRC_DIR=./cmd
+# Outils
 LINT=golangci-lint
 
-.PHONY: all build run clean lint docker docker-run test
+# Cibles phony
+.PHONY: all build run clean lint docker docker-run test doc setup
+
+# Setup des dépendances
+setup:
+	go install github.com/swaggo/swag/cmd/swag@latest
+	go install github.com/swaggo/swag/cmd/swag@latest
+	go mod tidy -go="1.23.0"
+
+# Génération de la documentation Swagger
+doc:
+	swag init -g $(ENTRY_POINT)
 
 # Build du binaire
-build:
-	go mod tidy -go="1.23.0"
+build: doc
 	go build -o $(BINARY_NAME) $(ENTRY_POINT)
 
-# Exécuter localement
+# Exécution locale
 run:
 	go run $(ENTRY_POINT)
 
-# Linter avec golangci-lint
+# Analyse statique avec golangci-lint
 lint:
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	$(LINT) run ./...
 
-# Supprimer le binaire
+# Suppression du binaire compilé
 clean:
 	rm -f $(BINARY_NAME)
 
@@ -29,13 +39,13 @@ clean:
 docker:
 	docker build -t $(BINARY_NAME):latest .
 
-# Lancer le conteneur Docker localement
+# Lancement du conteneur Docker
 docker-run:
 	docker run -p 8080:8080 $(BINARY_NAME):latest
 
-# Tests unitaires
+# Lancer les tests
 test:
 	go test ./...
 
-# Tout faire
-all: clean build lint test
+# Exécuter tout le pipeline (clean, build, lint, test)
+all: clean setup build lint test

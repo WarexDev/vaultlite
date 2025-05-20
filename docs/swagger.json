@@ -1,0 +1,48 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "VaultLite is a lightweight secrets management API for secure storage and retrieval of secrets in cloud-native environments.",
+        "title": "VaultLite API",
+        "termsOfService": "https://github.com/WarexDev/vaultlite/blob/main/LICENSE",
+        "contact": {
+            "name": "Benoit (WarexDev)",
+            "url": "https://github.com/WarexDev",
+            "email": "benoit.fraysse@hotmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/health": {
+            "get": {
+                "description": "Returns a simple OK status to verify the service is up and running",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
+                "summary": "Check the health status of the service",
+                "responses": {
+                    "200": {
+                        "description": "OK status",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
