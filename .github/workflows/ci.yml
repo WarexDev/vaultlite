@@ -1,11 +1,10 @@
 name: Go CI
+
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   build-and-lint:
@@ -20,7 +19,7 @@ jobs:
         with:
           go-version: '1.23'
 
-      - name: Build cmd/main.go
+      - name: Build project
         run: go build -o vaultlite ./cmd/main.go
 
       - name: Lint
