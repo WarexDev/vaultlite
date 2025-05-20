@@ -13,7 +13,7 @@ import (
 // @Produce json
 // @Success 200 {object} map[string]string "OK status"
 // @Router /api/health [get]
-func healthCheck(c *gin.Context) {
+func HealthCheck(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})
 }
 
@@ -24,6 +24,6 @@ func healthCheck(c *gin.Context) {
 // @Produce json
 // @Success 200 {object} map[string]string "PONG status"
 // @Router /api/ping [get]
-func ping(c *gin.Context) {
+func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "pong"})
 }

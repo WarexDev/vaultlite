@@ -1,4 +1,4 @@
-package service
+package routes
 
 import (
 	_ "github.com/WarexDev/vaultlite/docs"
@@ -7,16 +7,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func RegisterRoutes(router *gin.Engine) {
-
-	// register api group
-	apiGroup := router.Group("/api")
-
+func RegisterSwagger(apiGroup *gin.RouterGroup) {
 	// swagger documentation
 	apiGroup.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	// health services
-	apiGroup.GET("/ping", ping)
-	apiGroup.GET("/health", healthCheck)
-
 }
