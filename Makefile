@@ -10,6 +10,7 @@ LINT=golangci-lint
 
 # Build du binaire
 build:
+	go mod tidy -go="1.23.0"
 	go build -o $(BINARY_NAME) $(ENTRY_POINT)
 
 # Exécuter localement
