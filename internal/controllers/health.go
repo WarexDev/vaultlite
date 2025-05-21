@@ -1,4 +1,11 @@
-package service
+// Package controllers defines the HTTP handlers for VaultLite's REST API.
+//
+// It includes controller functions responsible for handling authentication,
+// health checks, and other service-level endpoints.
+//
+// Each handler responds with appropriate JSON payloads and status codes
+// and is documented using Swagger annotations for automated OpenAPI generation.
+package controllers
 
 import (
 	"net/http"

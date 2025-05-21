@@ -17,6 +17,7 @@
 package main
 
 import (
+	_ "github.com/WarexDev/vaultlite/docs"
 	"github.com/WarexDev/vaultlite/internal/api"
 )
 

@@ -1,4 +1,4 @@
-basePath: /
+basePath: /api
 host: localhost:8080
 info:
   contact:
@@ -10,11 +10,11 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  termsOfService: https://github.com/WarexDev/vaultlite/blob/main/LICENSE
+  termsOfService: https://github.com/WarexDev/vaultlite/blob/master/LICENSE
   title: VaultLite API
   version: "1.0"
 paths:
-  /health:
+  /api/health:
     get:
       description: Returns a simple OK status to verify the service is up and running
       produces:
@@ -29,6 +29,51 @@ paths:
       summary: Check the health status of the service
       tags:
       - health
+  /api/login:
+    post:
+      description: Returns users infos on successful creation.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: token
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Logging to an account to generate an api token
+      tags:
+      - auth
+  /api/ping:
+    get:
+      description: Returns a simple pong status to verify the service is up and running
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: PONG status
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Ping the service
+      tags:
+      - health
+  /api/register:
+    post:
+      description: Returns users infos on successful creation.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Register a new account to the service
+      tags:
+      - auth
 schemes:
 - http
 swagger: "2.0"

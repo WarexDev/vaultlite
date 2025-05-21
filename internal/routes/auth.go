@@ -11,12 +11,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// RegisterHealth registers the health check endpoints to the given API route group.
+// RegisterAuth registers the authentication-related endpoints to the given API route group.
 //
 // It defines the following routes:
-// - GET /ping: simple connectivity check (returns "pong").
-// - GET /health: full health check to verify the service is running properly.
-func RegisterHealth(apiGroup *gin.RouterGroup) {
-	apiGroup.GET("/ping", controllers.Ping)
-	apiGroup.GET("/health", controllers.HealthCheck)
+// - POST /login: to authenticate and obtain an API token.
+// - POST /register: to create a new user account.
+func RegisterAuth(apiGroup *gin.RouterGroup) {
+	// register auth service
+	apiGroup.POST("/login", controllers.Login)
+	apiGroup.POST("/register", controllers.Register)
 }
