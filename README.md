@@ -5,7 +5,7 @@
 ## Features
 
 - 🔐 AES-encrypted secrets
-- 🧘 REST API with Fiber
+- 🧘 REST API with Gin
 - ☸️ Deployable on Kubernetes
 - 🔄 GitOps-friendly (ArgoCD-ready)
 
