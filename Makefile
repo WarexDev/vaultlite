@@ -22,14 +22,17 @@ doc:
 build: doc
 	go build -o $(BINARY_NAME) $(ENTRY_POINT)
 
-# Exécution locale
 run:
 	go run $(ENTRY_POINT)
 
-# Analyse statique avec golangci-lint
 lint:
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	$(LINT) run ./...
+
+
+lint-fix:
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	$(LINT) run ./... --fix
 
 # Suppression du binaire compilé
 clean:

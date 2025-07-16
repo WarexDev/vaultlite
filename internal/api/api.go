@@ -9,8 +9,9 @@
 package api
 
 import (
-	"github.com/WarexDev/vaultlite/internal/routes"
 	"github.com/gin-gonic/gin"
+
+	"github.com/WarexDev/vaultlite/internal/routes"
 )
 
 // SetupRouter Create gin router & Register api routes

@@ -7,11 +7,12 @@
 package routes
 
 import (
-	"github.com/WarexDev/vaultlite/internal/controllers"
 	"github.com/gin-gonic/gin"
+
+	"github.com/WarexDev/vaultlite/internal/controllers"
 )
 
-// RegisterUsers registers the users endpoints to the given API route group.
+// RegisterUsers registers the users endpoints to the gi"github.com/WarexDev/vaultlite/internal/controllers"ven API route group.
 //
 // It defines the following routes:
 // TODO : Add routes description

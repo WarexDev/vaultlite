@@ -7,8 +7,9 @@
 package routes
 
 import (
-	"github.com/WarexDev/vaultlite/internal/controllers"
 	"github.com/gin-gonic/gin"
+
+	"github.com/WarexDev/vaultlite/internal/controllers"
 )
 
 // RegisterHealth registers the health check endpoints to the given API route group.
