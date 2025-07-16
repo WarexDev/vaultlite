@@ -14,7 +14,7 @@ info:
   title: VaultLite API
   version: "1.0"
 paths:
-  /api/health:
+  /health:
     get:
       description: Returns a simple OK status to verify the service is up and running
       produces:
@@ -29,22 +29,18 @@ paths:
       summary: Check the health status of the service
       tags:
       - health
-  /api/login:
+  /login:
     post:
       description: Returns users infos on successful creation.
       produces:
       - application/json
       responses:
         "200":
-          description: token
-          schema:
-            additionalProperties:
-              type: string
-            type: object
+          description: OK
       summary: Logging to an account to generate an api token
       tags:
       - auth
-  /api/ping:
+  /ping:
     get:
       description: Returns a simple pong status to verify the service is up and running
       produces:
@@ -59,21 +55,88 @@ paths:
       summary: Ping the service
       tags:
       - health
-  /api/register:
+  /refresh:
     post:
       description: Returns users infos on successful creation.
       produces:
       - application/json
       responses:
         "200":
-          description: OK status
-          schema:
-            additionalProperties:
-              type: string
-            type: object
-      summary: Register a new account to the service
+          description: OK
+      summary: Logging to an account to generate an api token
       tags:
       - auth
+  /revoke:
+    post:
+      description: Revoke the current token.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Revoke an existing token
+      tags:
+      - auth
+  /users/me/secrets:
+    get:
+      description: Returns the list of available credentials.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            type: string
+      summary: Get a list of secret ids from user's private vault.
+      tags:
+      - Users/Secrets
+    post:
+      description: Create a new credential.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create a new secret into user's private vault.
+      tags:
+      - Users/Secrets
+  /users/me/secrets/{key}:
+    delete:
+      description: Delete the value of an existing credential.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            type: string
+      summary: Delete an existing secret from user's private vault.
+      tags:
+      - Users/Secrets
+    get:
+      description: Returns the value for a credential.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            type: string
+      summary: Get a secret by key from user's private vault.
+      tags:
+      - Users/Secrets
+    put:
+      description: Update the value of an existing credential.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK status
+          schema:
+            type: string
+      summary: Update an existing secret from user's private vault.
+      tags:
+      - Users/Secrets
 schemes:
 - http
 swagger: "2.0"

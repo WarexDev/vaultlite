@@ -14,10 +14,14 @@ import (
 // RegisterAuth registers the authentication-related endpoints to the given API route group.
 //
 // It defines the following routes:
-// - POST /login: to authenticate and obtain an API token.
-// - POST /register: to create a new user account.
+// - POST /auth/login: to authenticate and obtain an API token.
+// - POST /auth/revoke: to revoke an API token.
+// - POST /auth/refresh: to renew an API token.
 func RegisterAuth(apiGroup *gin.RouterGroup) {
-	// register auth service
-	apiGroup.POST("/login", controllers.Login)
-	apiGroup.POST("/register", controllers.Register)
+	authGroup := apiGroup.Group("/auth")
+
+	// user auth service
+	authGroup.POST("/login", controllers.Login)
+	authGroup.POST("/revoke", controllers.Revoke)
+	authGroup.POST("/refresh", controllers.Refresh)
 }

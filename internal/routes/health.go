@@ -14,7 +14,7 @@ import (
 // RegisterHealth registers the health check endpoints to the given API route group.
 //
 // It defines the following routes:
-// - GET /ping: simple connectivity check (returns "pong").
+// - GET /ping: simple connectivity check.
 // - GET /health: full health check to verify the service is running properly.
 func RegisterHealth(apiGroup *gin.RouterGroup) {
 	apiGroup.GET("/ping", controllers.Ping)

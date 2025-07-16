@@ -24,7 +24,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/health": {
+        "/health": {
             "get": {
                 "description": "Returns a simple OK status to verify the service is up and running",
                 "produces": [
@@ -47,7 +47,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/login": {
+        "/login": {
             "post": {
                 "description": "Returns users infos on successful creation.",
                 "produces": [
@@ -59,18 +59,12 @@ const docTemplate = `{
                 "summary": "Logging to an account to generate an api token",
                 "responses": {
                     "200": {
-                        "description": "token",
-                        "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
-                        }
+                        "description": "OK"
                     }
                 }
             }
         },
-        "/api/ping": {
+        "/ping": {
             "get": {
                 "description": "Returns a simple pong status to verify the service is up and running",
                 "produces": [
@@ -93,7 +87,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/register": {
+        "/refresh": {
             "post": {
                 "description": "Returns users infos on successful creation.",
                 "produces": [
@@ -102,15 +96,117 @@ const docTemplate = `{
                 "tags": [
                     "auth"
                 ],
-                "summary": "Register a new account to the service",
+                "summary": "Logging to an account to generate an api token",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/revoke": {
+            "post": {
+                "description": "Revoke the current token.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Revoke an existing token",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/me/secrets": {
+            "get": {
+                "description": "Returns the list of available credentials.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users/Secrets"
+                ],
+                "summary": "Get a list of secret ids from user's private vault.",
                 "responses": {
                     "200": {
                         "description": "OK status",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new credential.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users/Secrets"
+                ],
+                "summary": "Create a new secret into user's private vault.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/me/secrets/{key}": {
+            "get": {
+                "description": "Returns the value for a credential.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users/Secrets"
+                ],
+                "summary": "Get a secret by key from user's private vault.",
+                "responses": {
+                    "200": {
+                        "description": "OK status",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the value of an existing credential.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users/Secrets"
+                ],
+                "summary": "Update an existing secret from user's private vault.",
+                "responses": {
+                    "200": {
+                        "description": "OK status",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the value of an existing credential.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users/Secrets"
+                ],
+                "summary": "Delete an existing secret from user's private vault.",
+                "responses": {
+                    "200": {
+                        "description": "OK status",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }

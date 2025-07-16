@@ -22,5 +22,6 @@ func SetupRouter() *gin.Engine {
 	routes.RegisterSwagger(apiGroup)
 	routes.RegisterHealth(apiGroup)
 	routes.RegisterAuth(apiGroup)
+	routes.RegisterUsers(apiGroup)
 	return r
 }
